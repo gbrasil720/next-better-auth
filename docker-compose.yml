@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  postgresql:
+    image: bitnami/postgresql:latest
+    container_name: postgresql
+    environment:
+      - POSTGRESQL_USERNAME=admin
+      - POSTGRESQL_PASSWORD=next-better-auth
+      - POSTGRESQL_DATABASE=main_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgresql_data:/bitnami/postgresql
+
+volumes:
+  postgresql_data:
+    driver: local
