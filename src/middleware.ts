@@ -44,6 +44,10 @@ export default async function authMiddleware(req: NextRequest) {
 		return NextResponse.redirect(new URL('/dashboard', req.url))
 	}
 
+	if (session && role === 'admin' && isAuthRoute) {
+		return NextResponse.redirect(new URL('/dashboard/admin', req.url))
+	}
+
 	if (session && role === 'admin' && isAdminRoute) {
 		return NextResponse.next()
 	}
